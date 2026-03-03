@@ -8,17 +8,17 @@
             <div class="form-card">
                 <h2 class="form-title">Registrar Nuevo Producto</h2>
 
-                <form action="#" method="POST" enctype="multipart/form-data">
-
+                <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre del Producto</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ej: Licencia de Software IDE Pro"
-                            required>
+                            >
                     </div>
 
                     <div class="form-group">
                         <label for="precio">Precio (USD)</label>
-                        <input type="number" id="precio" name="precio" step="0.01" placeholder="99.99" required>
+                        <input type="number" id="precio" name="precio" step="0.01" placeholder="99.99" >
                     </div>
 
                     <div class="form-group">
@@ -32,12 +32,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <select id="estado" name="estado">
-                            <option value="disponible">Disponible</option>
-                            <option value="lanzamiento">Próximo Lanzamiento</option>
-                            <option value="descontinuado">Descontinuado</option>
-                            <option value="beta">Versión Beta</option>
+                        <label for="estado">Categoria</label>
+                        <select  name="categoria">
+                            @foreach ($myCategories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option> 
+                            @endforeach
+                            
                         </select>
                     </div>
 
