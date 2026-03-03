@@ -19,7 +19,12 @@
                 <div class="product-card-enhanced">
                     <div class="product-image">
                         <span class="status-badge badge-active">Activo</span>
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400" alt="">
+                        @if ( $product->image)
+                             <img src="{{ asset('storage/'. $product->image)  }}" alt="No tiene imagen">
+                        @else
+                             <img src="https://cdn-icons-png.flaticon.com/512/1554/1554591.png" alt="No tiene imagen">
+                        @endif
+                        
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">{{ $product->name }}</h3>

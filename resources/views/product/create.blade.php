@@ -12,8 +12,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre del Producto</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Licencia de Software IDE Pro"
-                            >
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Licencia de Software IDE Pro">
                     </div>
 
                     <div class="form-group">
