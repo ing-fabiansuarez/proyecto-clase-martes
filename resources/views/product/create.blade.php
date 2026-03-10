@@ -8,21 +8,34 @@
             <div class="form-card">
                 <h2 class="form-title">Registrar Nuevo Producto</h2>
 
+                <br>
+                @if ($errors->any())
+                    <div style="color: red">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+
+                <br>
+
                 <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre del Producto</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Licencia de Software IDE Pro">
+                        <input value="{{old('nombre')}}" type="text" id="nombre" name="nombre" placeholder="Ej: Licencia de Software IDE Pro">
                     </div>
 
                     <div class="form-group">
                         <label for="precio">Precio (USD)</label>
-                        <input type="number" id="precio" name="precio" step="0.01" placeholder="99.99" >
+                        <input type="number" id="precio" name="precio" step="0.01" placeholder="99.99" value="{{old('precio')}}">
                     </div>
 
                     <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <textarea id="descripcion" name="descripcion" placeholder="Características clave, beneficios y detalles técnicos..."></textarea>
+                        <textarea id="descripcion" name="descripcion" placeholder="Características clave, beneficios y detalles técnicos...">
+                            value="{{old('descripcion')}}
+                        </textarea>
                     </div>
 
                     <div class="form-group">
@@ -32,11 +45,11 @@
 
                     <div class="form-group">
                         <label for="estado">Categoria</label>
-                        <select  name="categoria">
+                        <select name="categoria">
                             @foreach ($myCategories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option> 
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
-                            
+
                         </select>
                     </div>
 
@@ -51,5 +64,5 @@
 
     </div>
 
-   
+
 @endsection
